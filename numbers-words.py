@@ -12,21 +12,11 @@ TENS = [
     "eigthty",
     "ninety",
 ]
-TEN_TWENTY = [
-    "eleven",
-    "twelve",
-    "thirteen",
-    "fourteen",
-    "fifteen",
-    "sixteen",
-    "seventeen",
-    "eighteen",
-    "nineteen",
-]
+
 HUNDREDS = [i + " hundred" for i in ZERO]
 THOUSANDS = [i + " thousand" for i in ZERO]
-TENS_THOUSANDS = [i for i in TENS]
-HUNDREDS_THOUSANDS = [i for i in HUNDREDS]
+# TENS_THOUSANDS = [i for i in TENS]
+# HUNDREDS_THOUSANDS = [i for i in HUNDREDS]
 MILLIONS = [i + " million" for i in ZERO]
 
 reference = {
@@ -34,8 +24,8 @@ reference = {
     1: TENS,
     2: HUNDREDS,
     3: THOUSANDS,
-    4: TENS_THOUSANDS,
-    5: HUNDREDS_THOUSANDS,
+    4: TENS,
+    5: HUNDREDS,
     6: MILLIONS,
 }
 special_reference = {
@@ -73,7 +63,7 @@ def write_number(ndigits, digits):
         else:
             if (ndigits - 1 == 4 or ndigits - 1 == 5) and i == 3:
                 print(" thousand", end=" ")
-                i -= 1
+
         i -= 1
 
 
