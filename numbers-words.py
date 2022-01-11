@@ -39,6 +39,7 @@ reference = {
     6: MILLIONS,
 }
 special_reference = {
+    0: "ten",
     1: "eleven",
     2: "twelve",
     3: "thirteen",
@@ -52,15 +53,28 @@ special_reference = {
 
 
 def write_number(ndigits, digits):
-    for i in range(ndigits - 1, -1, -1):
-        # print(i, end=" - ")
+    i = ndigits - 1
+    while i >= 0:
+
         c = reference[i]
         d = digits[i]
         if d != 0:
-            print(c[d - 1], end=" ")
+            if d == 1 and i == 4:
+                i = 3
+                print(special_reference[digits[i]], end=" ")
+                print(" thousand", end=" ")
+
+            elif d == 1 and i == 1:
+                i = 0
+                print(special_reference[digits[i]], end=" ")
+
+            else:
+                print(c[d - 1], end=" ")
         else:
             if (ndigits - 1 == 4 or ndigits - 1 == 5) and i == 3:
-                print("thousand", end=" ")
+                print(" thousand", end=" ")
+                i -= 1
+        i -= 1
 
 
 number = 1
@@ -82,12 +96,11 @@ while number != 0:
 
     if number >= 11 and number <= 19:
         print(special_reference[digits[0]])
-    elif number >= 11000 and number <= 19999:
 
-        # for i in range(ndigits-2,-1,-1):
+    elif number >= 11000 and number <= 19999:
         d = digits[3]
-        print(special_reference[d] + "thousand")
-        write_number(ndigits - 1, digits)
+        print(special_reference[d] + " thousand", end=" ")
+        write_number(ndigits - 2, digits)
     else:
         write_number(ndigits, digits)
 
