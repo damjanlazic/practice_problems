@@ -79,9 +79,9 @@ def write_number(ndigits, digits):
 
 number = 1
 while number != 0:
-    number = int(input("number = "))
+    number = int(input("n = "))
 
-    n = number
+    n = abs(number)
     ndigits = 0
     digits = {}
     if n == 0:
@@ -93,11 +93,13 @@ while number != 0:
             ndigits += 1
 
     print(digits)
+    if number < 0:
+        print("minus", end=" ")
 
-    if number >= 11 and number <= 19:
+    if n >= 11 and n <= 19:
         print(special_reference[digits[0]])
 
-    elif number >= 11000 and number <= 19999:
+    elif n >= 11000 and n <= 19999:
         d = digits[3]
         print(special_reference[d] + " thousand", end=" ")
         write_number(ndigits - 2, digits)
