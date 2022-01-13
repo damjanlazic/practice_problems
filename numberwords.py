@@ -11,11 +11,11 @@ class NumberWord:
         "ten",
         "twenty",
         "thirty",
-        "fourty",
+        "forty",
         "fifty",
         "sixty",
         "seventy",
-        "eigthty",
+        "eighty",
         "ninety",
     ]
 
@@ -50,9 +50,12 @@ class NumberWord:
     digits: Dict
 
     def __init__(self, number):
-        self.number = number
+        self.number = int(number)
+        self.digits = self.separate_digits(number)
+        self.word_number = self.transmute_number(self.digits)
 
-        n = abs(number)
+    def separate_digits(self, number):
+        n = abs(int(number))
         ndigits = 0
         digits = {}
         while n != 0:
@@ -61,7 +64,7 @@ class NumberWord:
             ndigits += 1
 
         self.digits = digits
-        self.transmute_number(digits)
+        return digits
 
     def write_number(self, ndigits, digits):
         i = ndigits - 1
